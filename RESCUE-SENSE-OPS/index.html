@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <meta name="description" content="RESCUE-SENSE OPS structural risk monitoring and rescue coordination prototype.">
+  <title>RESCUE-SENSE OPS | Structural Intelligence</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" aria-label="RESCUE-SENSE home">
+        <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 35 11.5v17L20 37 5 28.5v-17L20 3Z"/><path d="M20 10v20M10 15.5l20 9M10 24.5l20-9"/><circle cx="20" cy="20" r="4"/></svg></span>
+        <span><strong>RESCUE<span>-SENSE</span></strong><small>STRUCTURAL INTELLIGENCE</small></span>
+      </a>
+      <div class="sidebar-label">OPERATIONS</div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview" data-section="overview"><span class="nav-icon">◫</span> Command overview <span class="nav-count" id="navAlertCount">0</span></a>
+        <a class="nav-link" href="#building" data-section="building"><span class="nav-icon">▦</span> Building sensors</a>
+        <a class="nav-link" href="#incidents" data-section="incidents"><span class="nav-icon">⚑</span> Incident queue</a>
+        <a class="nav-link" href="#history" data-section="history"><span class="nav-icon">◷</span> Event timeline</a>
+      </nav>
+      <div class="sidebar-label system-label">SYSTEM</div>
+      <div class="system-card"><span class="status-dot green"></span><div><strong>Simulation online</strong><small>Local demonstration mode</small></div></div>
+      <div class="sidebar-bottom"><div class="mini-shield">✦</div><p><strong>Response-ready design</strong><br><span>Prototype environment · v3.0</span></p><span class="version-pill">DEMO</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div class="breadcrumb"><span>OPERATIONS CENTER</span><b>/</b><strong id="crumbTitle">Command overview</strong></div>
+        <div class="topbar-right"><div class="mode-pill"><span class="status-dot amber"></span> SIMULATION MODE</div><div class="clock-wrap"><span class="clock-label">LOCAL SYSTEM TIME</span><strong id="liveClock">--:--:--</strong></div><div class="avatar">RS</div></div>
+      </header>
+
+      <section class="page-intro" id="overview">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> DISASTER RESPONSE · STRUCTURAL MONITORING</div><h1>Command <em>overview</em></h1><p>Detect abnormal movement. Prioritize risk. Coordinate a faster response.</p></div>
+        <div class="intro-actions"><button class="btn btn-ghost" id="exportBtn"><span>↓</span> Export report</button><button class="btn btn-primary" id="runCheckBtn"><span>◎</span> Run safety check</button></div>
+      </section>
+
+      <div class="demo-banner"><span class="banner-icon">ⓘ</span><div><strong>Demonstration environment</strong><span>All sensor values, SOS signals and rescue notifications are simulated. This prototype is not a certified structural-safety system.</span></div><button class="banner-close" id="dismissBanner" aria-label="Dismiss notice">×</button></div>
+
+      <section class="metric-grid" aria-label="System summary">
+        <article class="metric-card"><div class="metric-top"><span>MONITORED SENSORS</span><span class="metric-icon cyan">⌁</span></div><div class="metric-value"><strong id="metricSensors">06</strong><span class="metric-sub">online nodes</span></div><div class="metric-foot"><span class="tiny-check">✓</span> All nodes reporting</div><div class="metric-accent cyan-accent"></div></article>
+        <article class="metric-card"><div class="metric-top"><span>STRUCTURAL RISK</span><span class="metric-icon amber">⌁</span></div><div class="metric-value"><strong id="metricRisk">18</strong><span class="metric-unit">/100</span><span class="risk-chip low" id="riskChip">LOW</span></div><div class="metric-foot"><span id="riskFoot">Within demo baseline</span></div><div class="metric-accent amber-accent"></div></article>
+        <article class="metric-card"><div class="metric-top"><span>ACTIVE INCIDENTS</span><span class="metric-icon red">⚑</span></div><div class="metric-value"><strong id="metricIncidents">00</strong><span class="metric-sub">requiring review</span></div><div class="metric-foot"><span class="tiny-alert">!</span> <span id="incidentFoot">No active critical alerts</span></div><div class="metric-accent red-accent"></div></article>
+        <article class="metric-card"><div class="metric-top"><span>LAST SAFETY CHECK</span><span class="metric-icon violet">◷</span></div><div class="metric-value"><strong class="time-value" id="lastCheck">Never</strong></div><div class="metric-foot">Run a check to refresh readings</div><div class="metric-accent violet-accent"></div></article>
+      </section>
+
+      <section class="workspace-grid">
+        <article class="panel building-panel" id="building">
+          <div class="panel-heading"><div><div class="eyebrow small-eyebrow">LIVE SITE VIEW</div><h2>Building sensor map</h2><p class="panel-subtitle">Demo structure · Block A · 3 levels</p></div><button class="icon-button" id="buildingInfoBtn" title="Building information" aria-label="Building information">ⓘ</button></div>
+          <div class="building-toolbar"><div class="site-select"><span class="site-pin">⌖</span><div><strong>North Sector · Block A</strong><small>Demo coordinates · not a real site</small></div><span class="chevron">⌄</span></div><div class="map-live"><span class="pulse-dot"></span> LIVE SIMULATION</div></div>
+          <div class="building-stage">
+            <div class="floor-labels"><span>LEVEL 03</span><span>LEVEL 02</span><span>LEVEL 01</span><span>FOUNDATION</span></div>
+            <svg class="building-svg" viewBox="0 0 470 330" role="img" aria-label="Illustration of a three-level building with six sensor nodes">
+              <defs><linearGradient id="buildingFill" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1e3541"/><stop offset="1" stop-color="#15252f"/></linearGradient><pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#243943" stroke-width=".7"/></pattern></defs>
+              <rect x="12" y="8" width="446" height="312" rx="12" fill="url(#gridPattern)"/>
+              <path d="M90 288 L125 267 L356 267 L391 288 L90 288Z" fill="#1a2b35" stroke="#46606b" stroke-width="1.2"/>
+              <path d="M125 267V63L240 25L356 63V267Z" fill="url(#buildingFill)" stroke="#5b7884" stroke-width="1.6"/>
+              <path d="M125 63L240 99L356 63M125 131L240 166L356 131M125 199L240 234L356 199M240 99V267" fill="none" stroke="#52707c" stroke-width="1.4"/>
+              <path d="M125 63L240 99L356 63V131L240 166L125 131Z" fill="#29414c" opacity=".55"/><path d="M125 131L240 166L356 131V199L240 234L125 199Z" fill="#213944" opacity=".6"/>
+              <g fill="#385560" stroke="#6d8b97" stroke-width=".7"><path d="M145 77l24 8v27l-24-8z"/><path d="M181 88l24 8v27l-24-8z"/><path d="M270 96l24-8v27l-24 8z"/><path d="M306 84l24-8v27l-24 8z"/><path d="M145 145l24 8v27l-24-8z"/><path d="M181 156l24 8v27l-24-8z"/><path d="M270 164l24-8v27l-24 8z"/><path d="M306 152l24-8v27l-24 8z"/><path d="M145 213l24 8v27l-24-8z"/><path d="M181 224l24 8v27l-24-8z"/><path d="M270 232l24-8v27l-24 8z"/><path d="M306 220l24-8v27l-24 8z"/></g>
+              <g class="sensor-node" data-node="S-01" tabindex="0" role="button" aria-label="View sensor S-01" transform="translate(144 61)"><circle class="node-halo" r="13"/><circle class="node-core" r="6"/><text x="-17" y="-17">S-01</text></g>
+              <g class="sensor-node" data-node="S-02" tabindex="0" role="button" aria-label="View sensor S-02" transform="translate(337 74)"><circle class="node-halo" r="13"/><circle class="node-core" r="6"/><text x="9" y="-8">S-02</text></g>
+              <g class="sensor-node" data-node="S-03" tabindex="0" role="button" aria-label="View sensor S-03" transform="translate(143 137)"><circle class="node-halo" r="13"/><circle class="node-core" r="6"/><text x="-17" y="-17">S-03</text></g>
+              <g class="sensor-node" data-node="S-04" tabindex="0" role="button" aria-label="View sensor S-04" transform="translate(337 143)"><circle class="node-halo" r="13"/><circle class="node-core" r="6"/><text x="9" y="-8">S-04</text></g>
+              <g class="sensor-node" data-node="S-05" tabindex="0" role="button" aria-label="View sensor S-05" transform="translate(143 207)"><circle class="node-halo" r="13"/><circle class="node-core" r="6"/><text x="-17" y="-17">S-05</text></g>
+              <g class="sensor-node" data-node="S-06" tabindex="0" role="button" aria-label="View sensor S-06" transform="translate(337 212)"><circle class="node-halo" r="13"/><circle class="node-core" r="6"/><text x="9" y="-8">S-06</text></g>
+              <path d="M144 61L106 37H58M337 74L375 48H417M143 137L99 137H52M337 143L380 143H423M143 207L102 226H55M337 212L379 234H422" fill="none" stroke="#4b6875" stroke-dasharray="3 4" stroke-width="1" opacity=".8"/>
+              <text x="18" y="307" fill="#59747f" font-size="8" letter-spacing="1.5">SCHEMATIC VIEW · NOT TO SCALE</text>
+            </svg>
+            <div class="map-legend"><span><i class="legend-dot green-dot"></i> Normal</span><span><i class="legend-dot amber-dot"></i> Warning</span><span><i class="legend-dot red-dot"></i> Critical</span><span><i class="legend-dot grey-dot"></i> Offline</span></div>
+          </div>
+          <div class="sensor-table-wrap"><div class="subsection-heading"><h3>Sensor nodes</h3><span id="sensorOnlineLabel">6 / 6 reporting</span></div><div class="sensor-list" id="sensorList" aria-live="polite"></div></div>
+        </article>
+
+        <div class="right-stack">
+          <article class="panel risk-panel"><div class="panel-heading"><div><div class="eyebrow small-eyebrow">STRUCTURAL HEALTH INDEX</div><h2>Risk assessment</h2></div><span class="live-tag"><span class="pulse-dot"></span> LIVE</span></div>
+            <div class="risk-display"><div class="risk-gauge" id="riskGauge"><div class="gauge-inner"><strong id="gaugeValue">18</strong><span>RISK SCORE</span></div></div><div class="risk-description"><span class="risk-chip low" id="gaugeChip">LOW RISK</span><h3 id="riskHeadline">Structure stable</h3><p id="riskDescription">Current simulated readings are within the demo baseline.</p></div></div>
+            <div class="risk-scale"><span>0 · LOW</span><span>50 · ELEVATED</span><span>100 · CRITICAL</span></div>
+            <div class="risk-factors"><div><span>Movement deviation</span><strong id="factorMovement">12%</strong><div class="factor-track"><i id="barMovement" style="width:12%"></i></div></div><div><span>Vibration index</span><strong id="factorVibration">16%</strong><div class="factor-track"><i id="barVibration" style="width:16%"></i></div></div><div><span>Sensor agreement</span><strong id="factorAgreement">96%</strong><div class="factor-track"><i id="barAgreement" style="width:96%"></i></div></div></div>
+          </article>
+          <article class="panel scenario-panel"><div class="panel-heading"><div><div class="eyebrow small-eyebrow">DEMO CONTROLS</div><h2>Scenario simulator</h2></div><span class="scenario-tag">TEST MODE</span></div><p class="panel-subtitle">Trigger a controlled scenario to demonstrate system response.</p><div class="scenario-buttons"><button class="scenario-btn normal-scenario" data-scenario="normal"><span class="scenario-symbol">✓</span><span><strong>Normal conditions</strong><small>Stable sensor readings</small></span><span class="scenario-arrow">↗</span></button><button class="scenario-btn warning-scenario" data-scenario="warning"><span class="scenario-symbol">!</span><span><strong>Movement detected</strong><small>Elevated vibration event</small></span><span class="scenario-arrow">↗</span></button><button class="scenario-btn critical-scenario" data-scenario="critical"><span class="scenario-symbol">⚑</span><span><strong>Critical hazard</strong><small>High-risk simulated event</small></span><span class="scenario-arrow">↗</span></button></div><div class="scenario-footer scenario-footer-wrap"><div><button class="text-button" id="autoSimToggle"><span class="toggle-dot" id="autoToggleDot"></span><span id="autoToggleText">Start continuous simulation</span></button><div class="scenario-note" id="autoSimStatus">Paused</div></div><button class="btn btn-ghost btn-small" id="sosBtn">⚑ Simulate SOS</button></div></article>
+        </div>
+      </section>
+
+      <section class="lower-grid">
+        <article class="panel chart-panel"><div class="panel-heading"><div><div class="eyebrow small-eyebrow">TELEMETRY</div><h2>Risk trend</h2><p class="panel-subtitle">Recent simulated structural risk readings</p></div><div class="chart-key"><span><i></i> Risk score</span><strong id="chartCurrent">18 / 100</strong></div></div><div class="chart-area"><canvas id="riskChart" aria-label="Risk score history chart" role="img"></canvas><div class="chart-empty" id="chartEmpty" hidden>Run a safety check to start collecting readings.</div></div><div class="chart-footer"><span><i class="legend-dot green-dot"></i> Baseline 0–29</span><span><i class="legend-dot amber-dot"></i> Warning 30–69</span><span><i class="legend-dot red-dot"></i> Critical 70–100</span><span class="chart-update" id="chartUpdated">Waiting for first check</span></div></article>
+        <article class="panel incidents-panel" id="incidents"><div class="panel-heading"><div><div class="eyebrow small-eyebrow">PRIORITIZED RESPONSE</div><h2>Incident queue <span class="heading-count" id="incidentCountBadge">0</span></h2></div><button class="text-button" id="viewAllIncidents">View all <span>→</span></button></div><div class="incident-list" id="incidentList"><div class="empty-state"><span>✓</span><strong>All clear</strong><p>No active incidents. Trigger a scenario to test the response workflow.</p></div></div><div class="incident-footer"><span><span class="status-dot green"></span> Queue updates with simulated readings</span><button class="text-button" id="clearResolvedBtn">Clear resolved</button></div></article>
+      </section>
+
+      <section class="panel timeline-panel" id="history"><div class="panel-heading"><div><div class="eyebrow small-eyebrow">AUDIT TRAIL</div><h2>Event timeline</h2><p class="panel-subtitle">Recent system actions and alert activity</p></div><div class="timeline-actions"><button class="btn btn-ghost btn-small" id="clearHistoryBtn">Clear history</button><button class="btn btn-ghost btn-small" id="downloadHistoryBtn">↓ Download CSV</button></div></div><div class="timeline-table-wrap"><table><thead><tr><th>TIME</th><th>EVENT</th><th>DETAIL</th><th>STATUS</th></tr></thead><tbody id="timelineBody"><tr><td colspan="4" class="table-empty">No events recorded yet. Run a safety check to begin.</td></tr></tbody></table></div></section>
+      <footer class="app-footer"><span>RESCUE-SENSE OPS <b>·</b> Structural monitoring prototype</span><span><i class="status-dot green"></i> Local interface active <b>·</b> Not for real-world emergency decisions</span></footer>
+    </main>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <dialog class="modal" id="modal"><div class="modal-header"><div><div class="eyebrow small-eyebrow" id="modalEyebrow">SYSTEM MESSAGE</div><h2 id="modalTitle">Information</h2></div><button class="icon-button" id="modalClose" aria-label="Close dialog">×</button></div><div class="modal-body" id="modalBody"></div><div class="modal-actions"><button class="btn btn-primary" id="modalOk">Got it</button></div></dialog>
+  <script src="js/app.js"></script>
+</body>
+</html>
